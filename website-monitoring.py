@@ -30,8 +30,8 @@ def restart_server_and_container():
 def send_notification(email_msg):
     print('Sending an email...')
     with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-        smtp.starttls()
-        smtp.ehlo()
+        smtp.starttls()  # safety connection
+        smtp.ehlo()      # identify python
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         message = f"Subject: SITE DOWN\n{email_msg}"
         smtp.sendmail(EMAIL_ADDRESS, EMAIL_ADDRESS, message)
